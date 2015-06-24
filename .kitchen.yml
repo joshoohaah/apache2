@@ -8,22 +8,34 @@ provisioner:
   data_path: test/fixtures
 
 platforms:
-- name: centos-6.5
-  run_list:
-  - recipe[yum]
-- name: centos-7.0
-  run_list:
-  - recipe[yum]
-- name: ubuntu-12.04
-  run_list:
-  - recipe[apt]
-- name: ubuntu-14.04
-  run_list:
-  - recipe[apt]
-- name: debian-7.6
-  run_list:
-  - recipe[apt]
-- name: fedora-21
+  - name: oracle-66
+    driver_config:
+      box: oel66
+      box_url: https://s3.amazonaws.com/gehc.preprod.useast1.swrepo/Platforms/Vagrant/oel66-nocm12.2.1-1.0.15.box
+  - name: centos-70
+    driver_config:
+      box: mycentos70
+      box_url: https://s3.amazonaws.com/gehc.preprod.useast1.swrepo/Platforms/Vagrant/centos70-nocm+12.3.0-1.0.17.box
+  - name: centos-66
+    driver_config:
+      box: mycentos66
+      box_url: https://s3.amazonaws.com/gehc.preprod.useast1.swrepo/Platforms/Vagrant/centos66-nocm-1.0.17.box
+# - name: centos-6.5
+#   run_list:
+#   - recipe[yum]
+# - name: centos-7.0
+#   run_list:
+#   - recipe[yum]
+# - name: ubuntu-12.04
+#   run_list:
+#   - recipe[apt]
+# - name: ubuntu-14.04
+#   run_list:
+#   - recipe[apt]
+# - name: debian-7.6
+#   run_list:
+#   - recipe[apt]
+# - name: fedora-21
   run_list:
   - recipe[yum]
 - name: freebsd-10.1

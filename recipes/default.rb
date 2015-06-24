@@ -27,6 +27,7 @@ end
     mode '0755'
     owner 'root'
     group node['apache']['root_group']
+    recursive true
   end
 end
 
