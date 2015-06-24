@@ -157,6 +157,15 @@ template "#{node['apache']['dir']}/envvars" do
   only_if  { platform_family?('debian') }
 end
 
+
+%W(node['apache']['conf_dir']).each do |dir|
+  directory dir do
+    mode '0755'
+    owner 'root'
+    group node['apache']['root_group']
+    recursive true
+  end
+end
 template 'apache2.conf' do
   if platform_family?('rhel', 'fedora', 'arch', 'freebsd')
     path "#{node['apache']['conf_dir']}/httpd.conf"
