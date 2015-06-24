@@ -158,7 +158,9 @@ template "#{node['apache']['dir']}/envvars" do
 end
 
 
-%W(node['apache']['conf_dir']).each do |dir|
+%W(
+#{node['apache']['conf_dir']}
+).each do |dir|
   directory dir do
     mode '0755'
     owner 'root'
