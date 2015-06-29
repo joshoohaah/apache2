@@ -171,9 +171,10 @@ end
 
 #deletes httpd.conf in incorrect location
 directory "/etc/httpd/conf" do
-  action :delete
   recursive true
+  action :delete
 end
+
 link "#{node['apache']['conf_dir']}" do
   to "/etc/httpd/conf"
 end
