@@ -158,6 +158,12 @@ template "#{node['apache']['dir']}/envvars" do
 end
 
 
+#deletes httpd.conf in incorrect location
+directory "/etc/httpd/conf" do
+  recursive true
+  action :delete
+end
+
 %W(
 #{node['apache']['conf_dir']}
 ).each do |dir|
@@ -169,11 +175,6 @@ end
   end
 end
 
-#deletes httpd.conf in incorrect location
-directory "/etc/httpd/conf" do
-  recursive true
-  action :delete
-end
 
 link "/etc/httpd/conf" do
   to "#{node['apache']['conf_dir']}"
