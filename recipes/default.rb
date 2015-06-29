@@ -175,9 +175,12 @@ directory "/etc/httpd/conf" do
   action :delete
 end
 
-link "#{node['apache']['conf_dir']}" do
-  to "/etc/httpd/conf"
+link "/etc/httpd/conf" do
+  to "#{node['apache']['conf_dir']}"
 end
+# link "#{node['apache']['conf_dir']}" do
+#   to "/etc/httpd/conf"
+# end
 
 template 'apache2.conf' do
   if platform_family?('rhel', 'fedora', 'arch', 'freebsd')
